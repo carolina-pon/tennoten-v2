@@ -26,4 +26,5 @@ class Work < ApplicationRecord
   validates :description, presence: true
   validates :material, presence: true
   validates :images, presence: true
+  belongs_to :author
 end
