@@ -20,4 +20,9 @@ class Api::AuthorsController < ApplicationController
     author.destroy!
     render json: author
   end
+
+  private
+  def author_params
+    params.require(:author).permit(:name, :site, :sns)
+  end
 end
