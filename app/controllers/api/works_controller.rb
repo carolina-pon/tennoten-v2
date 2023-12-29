@@ -25,4 +25,9 @@ class Api::WorksController < ApplicationController
     Work.find(params[:id]).destroy
     render json: { message: 'Work deleted' }
   end
+
+  private
+  def work_params
+    params.require(:work).permit(:title, :description, :author_id, :exhibition_period_id)
+  end
 end
