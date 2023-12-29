@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_28_050503) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_28_120213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_050503) do
     t.string "name", null: false
     t.string "site"
     t.string "sns"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description", null: false
+    t.bigint "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "exhibition_period_id", null: false
+    t.index ["author_id"], name: "index_blogs_on_author_id"
+    t.index ["exhibition_period_id"], name: "index_blogs_on_exhibition_period_id"
+  end
+
+  create_table "exhibition_periods", force: :cascade do |t|
+    t.string "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,5 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_050503) do
     t.index ["author_id"], name: "index_works_on_author_id"
   end
 
+  add_foreign_key "blogs", "authors"
+  add_foreign_key "blogs", "exhibition_periods"
   add_foreign_key "works", "authors"
 end
