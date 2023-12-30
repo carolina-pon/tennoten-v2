@@ -27,4 +27,5 @@ class Work < ApplicationRecord
   validates :material, presence: true
   validates :images, presence: true
   belongs_to :author
+  has_many :works_categories, dependent: :destroy
 end

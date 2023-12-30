@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_28_120213) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_30_035747) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_120213) do
     t.bigint "exhibition_period_id", null: false
     t.index ["author_id"], name: "index_blogs_on_author_id"
     t.index ["exhibition_period_id"], name: "index_blogs_on_exhibition_period_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "exhibition_periods", force: :cascade do |t|
@@ -61,7 +68,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_120213) do
     t.index ["author_id"], name: "index_works_on_author_id"
   end
 
+  create_table "works_categories", force: :cascade do |t|
+    t.bigint "work_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_works_categories_on_category_id"
+    t.index ["work_id"], name: "index_works_categories_on_work_id"
+  end
+
   add_foreign_key "blogs", "authors"
   add_foreign_key "blogs", "exhibition_periods"
   add_foreign_key "works", "authors"
+  add_foreign_key "works_categories", "categories"
+  add_foreign_key "works_categories", "works"
 end
