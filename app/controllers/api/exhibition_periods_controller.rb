@@ -23,4 +23,9 @@ class Api::ExhibitionPeriodsController < ApplicationController
       render json: @exhibition_period.errors, status: :unprocessable_entity
     end
   end
+
+  private
+  def exhibition_period_params
+    params.require(:exhibition_period).permit(:date)
+  end
 end
