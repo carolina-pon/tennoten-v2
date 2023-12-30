@@ -13,4 +13,5 @@
 #
 class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: true
+  has_many :works_categories, dependent: :destroy
 end
