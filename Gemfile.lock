@@ -89,6 +89,8 @@ GEM
       reline (>= 0.2.7)
     debug_inspector (1.2.0)
     erubi (1.12.0)
+    faker (3.2.2)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -187,6 +189,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   debug
+  faker
   pg (~> 1.1)
   pry-byebug
   puma (~> 5.0)
