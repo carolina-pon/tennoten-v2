@@ -23,8 +23,16 @@ module TennotenV2
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    # テストを自動生成しない
     config.generators do |g|
-      g.test_framework false # テストを自動生成しない
+      g.test_framework false
     end
+    # i18n国際化対応
+    config.i18n.available_locales = :ja
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+    # i18nの複数ロケールファイルが読み込まれるようパスを通す
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
   end
 end

@@ -47,5 +47,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-byebug'
   gem 'faker'
+  gem 'rails-i18n'
 end
 
