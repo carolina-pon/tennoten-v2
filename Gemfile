@@ -46,5 +46,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-byebug'
+  gem 'faker'
+  gem 'rails-i18n'
+  gem 'rails-erd' 
 end
 

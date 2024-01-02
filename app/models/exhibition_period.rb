@@ -8,6 +8,6 @@
 #  updated_at :datetime         not null
 #
 class ExhibitionPeriod < ApplicationRecord
-  validates :name, presence: true
+  validates :date, presence: true
   has_many :blogs, dependent: :destroy
 end
